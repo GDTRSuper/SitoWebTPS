@@ -27,13 +27,8 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author FSEVERI\trovo2987
  */
 @Entity
-@Table(name = "Categorie")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Categorie.findAll", query = "SELECT c FROM Categorie c"),
-    @NamedQuery(name = "Categorie.findById", query = "SELECT c FROM Categorie c WHERE c.id = :id"),
-    @NamedQuery(name = "Categorie.findByNome", query = "SELECT c FROM Categorie c WHERE c.nome = :nome")})
-public class Categoria implements Serializable {
+@Table(name = "Categorie") 
+ public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -34,13 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "Eventi")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Eventi.findAll", query = "SELECT e FROM Eventi e"),
-    @NamedQuery(name = "Eventi.findById", query = "SELECT e FROM Eventi e WHERE e.id = :id"),
-    @NamedQuery(name = "Eventi.findByTitolo", query = "SELECT e FROM Eventi e WHERE e.titolo = :titolo"),
-    @NamedQuery(name = "Eventi.findByData", query = "SELECT e FROM Eventi e WHERE e.data = :data"),
-    @NamedQuery(name = "Eventi.findByLuogo", query = "SELECT e FROM Eventi e WHERE e.luogo = :luogo")})
-public class Evento implements Serializable {
+ public class Evento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

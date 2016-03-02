@@ -1,4 +1,6 @@
-package it.severi.gdtrsuper.db;
+package po;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,8 +8,8 @@ package it.severi.gdtrsuper.db;
  * and open the template in the editor.
  */
 
-
-import it.severi.gdtrsuper.config.HibernateUtil;
+ 
+import it.severi.gdtrsuper.db.Artista;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,9 +25,9 @@ import org.hibernate.Transaction;
  * @author FSEVERI\trovo2987
  */
 public class ManageDatabase {
-    
+    Session session = HibernateUtil.getSessionFactory().openSession();
     public List<Artista> getArtisti(){
-        Session session = HibernateUtil.sessionFactory.openSession();
+      
         Transaction tx = null;
         try{
             tx = session.beginTransaction();

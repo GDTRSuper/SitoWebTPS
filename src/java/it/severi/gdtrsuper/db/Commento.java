@@ -26,12 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "Commenti")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Commenti.findAll", query = "SELECT c FROM Commenti c"),
-    @NamedQuery(name = "Commenti.findById", query = "SELECT c FROM Commenti c WHERE c.id = :id"),
-    @NamedQuery(name = "Commenti.findByVoto", query = "SELECT c FROM Commenti c WHERE c.voto = :voto"),
-    @NamedQuery(name = "Commenti.findByTesto", query = "SELECT c FROM Commenti c WHERE c.testo = :testo")})
-public class Commento implements Serializable {
+ public class Commento implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
