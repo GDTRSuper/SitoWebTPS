@@ -10,6 +10,7 @@ package po;
 
  
 import it.severi.gdtrsuper.db.Artista;
+import it.severi.gdtrsuper.db.Categoria;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,14 +26,14 @@ import org.hibernate.Transaction;
  * @author FSEVERI\trovo2987
  */
 public class ManageDatabase {
-    Session session = HibernateUtil.getSessionFactory().openSession();
+    
     public List<Artista> getArtisti(){
-      
+      Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            Query query = session.getNamedQuery("Artisti.findAll");
-                
+           Query query = session.createQuery("from Artista");  
+
             List persone = query.list();
             List<Artista> ret = new ArrayList<Artista>();
             for (Object a : persone){
@@ -43,20 +44,49 @@ public class ManageDatabase {
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         
+        
             return null;
     }
+    
+     public List<Categoria> getCategorie(){
+      Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+           Query query = session.createQuery("from Categoria");  
+
+            List cats = query.list();
+            List<Categoria> ret = new ArrayList<Categoria>();
+            for (Object a : cats){
+                ret.add((Categoria)a);
+            }
+            tx.commit();
+            return ret;
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        
+        
+            return null;
+    }
+     
+    
     
     public Artista getArtista(int id){
         Session session = HibernateUtil.sessionFactory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            Query query = session.getNamedQuery("Artisti.findById").setInteger("id", id);
-                
+            
+           Query query = session.createQuery("from Artista where id = :id "); 
+           query.setParameter("id", id);
             return (Artista)query.list().get(0);
         }catch (HibernateException e) {
             if (tx!=null) tx.rollback();

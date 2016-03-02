@@ -19,6 +19,7 @@ public class IndexController {
     ManageDatabase db = new ManageDatabase();
     @RequestMapping(value="/",method=RequestMethod.GET)
     public String index(ModelMap map){
+        map.put("artisti", db.getArtisti());
         return "index";
     }
     
