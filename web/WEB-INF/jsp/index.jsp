@@ -13,5 +13,8 @@
         <c:forEach items="${artisti}" var="artista">
             <p>${artista.nome} ${artista.cognome}</p>
         </c:forEach>
+            
+           
+            <p>${art.nome} ${art.cognome}</p>
     </body>
 </html>
