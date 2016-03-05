@@ -48,6 +48,25 @@ public class ManageDatabase {
             return null;
     }
     
+    public void deleteArtista(int id){
+      Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            session.delete(this.getArtistaByID(id));
+            
+             
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        
+        
+            
+    }
+    
     public List<Artista> getArtistaByNome(String nome){
       Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -126,23 +145,5 @@ public class ManageDatabase {
      
     
     
-    public Artista getArtista(int id){
-        Session session = HibernateUtil.sessionFactory.openSession();
-        Transaction tx = null;
-        try{
-            tx = session.beginTransaction();
-            
-           Query query = session.createQuery("from Artista where id = :id "); 
-           query.setParameter("id", id);
-            return (Artista)query.list().get(0);
-        }catch (HibernateException e) {
-            if (tx!=null) tx.rollback();
-            e.printStackTrace();
-        }finally {
-            session.close();
-        }
-        
-            return null;
-    }
-     
+   
 }
