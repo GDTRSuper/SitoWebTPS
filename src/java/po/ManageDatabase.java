@@ -26,6 +26,53 @@ import org.hibernate.Transaction;
  * @author FSEVERI\trovo2987
  */
 public class ManageDatabase {
+    public Artista  getArtistaByID(int id){
+      Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+           Query query = session.createQuery("from Artista where id = :id");  
+           query.setInteger("id", id);
+
+            List persone = query.list();
+            if (persone.size()>0)
+            return (Artista)persone.get(0);
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        
+        
+            return null;
+    }
+    
+    public List<Artista> getArtistaByNome(String nome){
+      Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+           Query query = session.createQuery("from Artista where nome LIKE '% :nome %'");  
+           query.setString(":nome", nome);
+
+            List persone = query.list();
+            List<Artista> ret = new ArrayList<Artista>();
+            for (Object a : persone){
+                ret.add((Artista)a);
+            }
+            tx.commit();
+            return ret;
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        
+        
+            return null;
+    }
     
     public List<Artista> getArtisti(){
       Session session = HibernateUtil.getSessionFactory().openSession();
