@@ -21,8 +21,8 @@ public class IndexController {
     @RequestMapping(value="/",method=RequestMethod.GET)
     public String index(ModelMap map){
         map.put("artisti", db.getArtisti());
-        map.put("art", db.getArtistaByID(1));
+        //map.put("art", db.getArtistaByID(1));
         return "index";
     }
-    
+  
 }
