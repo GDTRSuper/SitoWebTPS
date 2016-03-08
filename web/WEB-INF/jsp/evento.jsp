@@ -1,17 +1,23 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : evento
+    Created on : 8-mar-2016, 9.43.53
+    Author     : FSEVERI\trovo2987
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="it">
 
 <head>
 
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>Evento</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="./res/css/bootstrap.min.css" rel="stylesheet">
@@ -41,19 +47,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="/">Home Page</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="#">Categorie</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#"></a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="#">Contatti</a>
                     </li>
                 </ul>
             </div>
@@ -67,47 +73,7 @@
 
         <div class="row">
 
-            <div class="col-md-3">
-                <p class="lead">Shop Name</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
-                </div>
-            </div>
-
-            <div class="col-md-9">
-
-                <div class="row carousel-holder">
-
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="col-md-12">
 
                 <div class="row">
 
@@ -116,9 +82,9 @@
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">Nickname</h4>
-                                <h4><a href="#">Evento 1</a></h4>
-                                <h5>Categoria</h5>
-                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                                <h2><a href="#">${evento.titolo}</a></h2>
+                                <h5>${evento.categoria}</h5>
+                                <p>${evento.luogo} <br/> ${evento.data} <br/> ${evento.id}</p>
                             </div>
                             <div class="ratings">
                                 <p class="pull-right">15 reviews</p>
