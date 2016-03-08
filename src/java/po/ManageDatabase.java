@@ -45,13 +45,14 @@ public class ManageDatabase {
         
     }
 
-    public Evento getEventoById(){
+    public Evento getEventoById(int id){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         
         try { 
            tx = session.beginTransaction();
            Query q = session.createSQLQuery("SELECT * FROM Evento where id= ? ").addEntity(Evento.class);
+           q.setInteger(1, id);
            if (q.list().size()>0) return (Evento)q.list().get(0);
         } catch (HibernateException e) {
             if (tx != null) {
