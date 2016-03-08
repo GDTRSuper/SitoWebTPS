@@ -237,7 +237,7 @@
     </div>
     <!-- /.container -->
     <c:forEach items="${artisti}" var="artista">
-        ${artista.nome}
+        ${artista.nome} ${artista.cognome}
     </c:forEach>
     <div class="container">
 
