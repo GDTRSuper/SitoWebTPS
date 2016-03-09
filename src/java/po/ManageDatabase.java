@@ -51,8 +51,8 @@ public class ManageDatabase {
         
         try { 
            tx = session.beginTransaction();
-           Query q = session.createSQLQuery("SELECT * FROM Evento where id= ? ").addEntity(Evento.class);
-           q.setInteger(1, id);
+           Query q = session.createSQLQuery("SELECT * FROM Eventi where id= ? ").addEntity(Evento.class);
+           q.setInteger(0, id);
            if (q.list().size()>0) return (Evento)q.list().get(0);
         } catch (HibernateException e) {
             if (tx != null) {

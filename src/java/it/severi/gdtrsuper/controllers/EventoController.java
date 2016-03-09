@@ -18,12 +18,11 @@ import po.ManageDatabase;
  */
 @Controller
 public class EventoController {
-  //ManageDatabase db = new ManageDatabase();
+  ManageDatabase db = new ManageDatabase();
     
     @RequestMapping(value="/evento",method=RequestMethod.GET)
     public String index(ModelMap map, @RequestParam(value="id", required=true)int id){
-        //map.put("evento", db.getEventoById(id));
-        
+        map.put("evento", db.getEventoById(id));
         return "evento";
     }
 }
