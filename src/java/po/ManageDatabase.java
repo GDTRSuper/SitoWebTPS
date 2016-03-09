@@ -29,8 +29,8 @@ public class ManageDatabase {
     public int getMediaVotoPerEvento(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        Query q = session.createSQLQuery("SELECT * FROM Evento where id= ? ").addEntity(Evento.class);
-        q.setInteger(1, id);
+        Query q = session.createSQLQuery("SELECT * FROM Eventi where id = ?").addEntity(Evento.class);
+        q.setInteger(0, id);
         if (q.list().size() >0){
             Evento e =(Evento)q.list().get(0);
             Collection<Commento> commenti = e.getCommentiCollection();
