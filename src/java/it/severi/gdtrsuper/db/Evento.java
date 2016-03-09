@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,6 +52,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @Basic(optional = false)
     @Column(name = "luogo")
     private String luogo;
+
+    public String getImmagine() {
+        return immagine;
+    }
+    @Column(name = "Immagine")
+    private String immagine;
     @JoinTable(name = "Eventi_Artisti", joinColumns = {
         @JoinColumn(name = "evento", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "artista", referencedColumnName = "id")})
@@ -62,9 +69,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @JoinColumn(name = "categoria", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Categoria categoria;
-    @OneToMany(mappedBy = "evento")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "evento")
     private Collection<Commento> commentiCollection;
 
+    public int getNumCommenti(){
+        return commentiCollection.size();
+    }
+    
     public Evento() {
     }
 
