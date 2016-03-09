@@ -44,7 +44,24 @@ public class ManageDatabase {
         return 0;
         
     }
-
+public List<Evento> getEventi(){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        
+        try { 
+           tx = session.beginTransaction();
+           Query q = session.createSQLQuery("SELECT * FROM Eventi order by id DESC").addEntity(Evento.class);
+          return q.list();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return null;
+    }
     public Evento getEventoById(int id){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;

@@ -82,6 +82,14 @@ import javax.xml.bind.annotation.XmlTransient;
     public Evento(Integer id) {
         this.id = id;
     }
+    
+    public int getMedia(){
+        int total=0;
+        for (Commento c : commentiCollection){
+            total = c.getVoto();
+        }
+        return total/commentiCollection.size();
+    }
 
     public Evento(Integer id, String titolo, Date data, String luogo) {
         this.id = id;
