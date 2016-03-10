@@ -44,13 +44,14 @@ public class ManageDatabase {
         return 0;
         
     }
-public List<Evento> getEventi(){
+    
+    public List<Evento> getEventi(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         
         try { 
            tx = session.beginTransaction();
-           Query q = session.createSQLQuery("SELECT * FROM Eventi order by id DESC").addEntity(Evento.class);
+           Query q = session.createSQLQuery("SELECT * FROM Eventi order by id DESC limit 10").addEntity(Evento.class);
           return q.list();
         } catch (HibernateException e) {
             if (tx != null) {
@@ -94,6 +95,28 @@ public List<Evento> getEventi(){
                 return (Artista) persone.get(0);
             }
             tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return null;
+    }public Categoria getCategoriaByID(int id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Categoria where id = :id");
+            query.setInteger("id", id);
+
+            List cats = query.list();
+            if (cats.size() > 0) {
+                return (Categoria) cats.get(0);
+            } 
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
