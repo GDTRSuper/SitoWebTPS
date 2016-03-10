@@ -47,7 +47,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">Home Page</a>
+                    <a class="navbar-brand" href="./">Home Page</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -79,25 +79,25 @@
 
                         <div class="col-md-12">
                             <div class="thumbnail">
-                                <!--<img src="http://placehold.it/320x150" alt="">-->
+                                <img src="${evento.getImmagine()}" alt="">
                                 <div class="evento">
-                                    <h3 class="pull-right">Giovanni</h3>
-                                    <h3><a href="">Titolo evento${evento.titolo}</a></h3>
-                                    <h5>Categoria evento${evento.categoria}</h5>
-                                    <p>Descrizione <br/>Si terrà a Padova il 8/3/2016<br/> </p>
-                                        ${evento.luogo}
-                                        ${evento.titolo}
-                                    <p>Artisti partecipanti: </p>
-                                    <button class="btn-btn-info" >Partecipa</button><br/>
+                                    <h3 class="pull-right">${evento.creatore.nickname}</h3>
+                                    <h3><a href="">${evento.titolo}</a></h3>
+                                    <h5>Categoria: ${evento.categoria.nome}</h5>
+                                    <p>Descrizione: ${evento.descrizione}<br/><br/>Si terrà a ${evento.luogo} il ${evento.data}<br/> </p>
+                                    <p>Artisti partecipanti: 
+                                        <c:forEach items="${evento.artistiCollection}" var="artista">
+                                           ${artista.nomeArte}
+                                        </c:forEach>
+                                    </p>
                                 </div>
                                 <div class="ratings">
-                                    <p class="pull-right">3 Commenti</p>
-                                    <p class="">
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
-                                        <span class="glyphicon glyphicon-star"></span>
+                                    <p class="pull-right">${evento.getNumCommenti()} Commenti</p>
+                                    <p>Rating   
+                                    <c:forEach begin="1" end="${evento.getMedia()}">
+                                    <span class="glyphicon glyphicon-star"></span> </c:forEach>
+                                    <c:forEach begin="${evento.getMedia()}" end="4">
+                                    <span  class="half glyphicon glyphicon-star-empty"></span> </c:forEach>
                                     </p>
                                 </div>
 
@@ -108,7 +108,7 @@
                                 <h4>Leave a Comment:</h4>
                                 <form role="form" action="./aggiungiComento" method="POST">
                                     <div class="form-group">
-                                        <textarea class="form-control" name="testo" rows="3" name="nuovoCommento" palceholder="Inserisci il tuo commento..."></textarea>
+                                        <textarea class="form-control" rows="3" name="nuovoCommento"></textarea>
                                         <br/>
                                         <p>
                                             <label>Inserisci il numero di stelle: </label>
@@ -128,67 +128,25 @@
                             <!-- Posted Comments -->
 
                             <!-- Comment -->
-                            <div class="media">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Mario
-                                        <small>
-                                            <span class="ratings">
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                            </span>
-                                        </small>
-                                    </h4>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                </div>
-                            </div>
-
-                            <!-- Comment -->
-                            <div class="media">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Luigi
-                                        <small>
-                                            <span class="ratings">
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                            </span>
-                                        </small>
-                                    </h4>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                    <!-- Nested Comment -->
-                                    <div class="media">
-                                        <a class="pull-left" href="#">
-                                            <img class="media-object" src="http://placehold.it/64x64" alt="">
-                                        </a>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Giacomo
-                                        <small>
-                                            <span class="ratings">
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                            </span>
-                                        </small>
-                                    </h4>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                        </div>
+                            <c:forEach items="${evento.commentiCollection}" var="commento">
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">${commento.utente.nickname}
+                                            <small class="ratings">
+                                                <c:forEach begin="1" end="${commento.voto}">
+                                                    <span class="glyphicon glyphicon-star"></span> </c:forEach>
+                                                <c:forEach begin="${commento.voto}" end="4">
+                                                    <span  class="half glyphicon glyphicon-star-empty"></span> 
+                                                </c:forEach>
+                                            </small>
+                                        </h4>
+                                        ${commento.testo}
                                     </div>
-                                    <!-- End Nested Comment -->
                                 </div>
-                            </div>
+                            </c:forEach>
 
                         </div>
                     </div>
@@ -197,20 +155,18 @@
             </div>
 
         </div>
+        <div class="container">
+            <hr>
 
-    </div>
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; GDTRSuper</p>
-            </div>
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Copyright &copy; GDTRSuper</p>
+                    </div>
+                </div>
+            </footer>
         </div>
-    </footer>
-
-</div>
 <!-- /.container -->
 
 <!-- jQuery -->
