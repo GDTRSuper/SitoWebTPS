@@ -24,7 +24,7 @@
 
         <!-- Custom CSS -->
         <link href="./res/css/evento.css" rel="stylesheet">
-
+        
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -103,21 +103,22 @@
 
                             </div>
                             
-                            <!-- Commenti -->
+                            <!-- Leave a comment -->
                             <div class="well">
                                 <h4>Leave a Comment:</h4>
                                 <form role="form" action="./aggiungiComento" method="POST">
                                     <div class="form-group">
                                         <textarea class="form-control" rows="3" name="nuovoCommento"></textarea>
                                         <br/>
-                                        <p>
+                                        <p class="rating">
                                             <label>Inserisci il numero di stelle: </label>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
-                                            <span class="glyphicon glyphicon-star-empty"></span>
+                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="1"></span>
+                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="2"></span>
+                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="3"></span>
+                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="4"></span>
+                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="5"></span>
                                         </p>
+                                        <input type="hidden" id="rating" name="rating" value="-1"> 
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
@@ -174,6 +175,6 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="./res/js/bootstrap.min.js"></script>
-
+        <script src="./res/js/rating-comment.js"></script>
 </body>
 </html>

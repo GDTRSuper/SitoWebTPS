@@ -25,4 +25,10 @@ public class EventoController {
         map.put("evento", db.getEventoById(id));
         return "evento";
     }
+    
+    @RequestMapping(value="/aggiungiEvento",method=RequestMethod.POST)
+    public String index1(ModelMap map, @RequestParam(value="nuovoCommento", required=true)String commento, @RequestParam(value="rating", required=true)int rating){
+        //map.put("evento", db.getEventoById(id));
+        return "evento";
+    }
 }
