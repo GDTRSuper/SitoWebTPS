@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -24,5 +25,13 @@ public class IndexController {
         map.put("ultimiEventi",db.getEventi() );
         return "index";
     }
+    
+    @RequestMapping(value="/categoria",method=RequestMethod.GET)
+    public String cats(ModelMap map, @RequestParam(value="id") Integer id){
+       map.put("ultimiEventi", db.getCategoriaByID(id).getEventiCollection());
+       map.put("cat", db.getCategoriaByID(id));
+        return "categoria";
+    }
+  
   
 }
