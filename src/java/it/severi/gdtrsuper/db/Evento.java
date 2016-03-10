@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -64,10 +65,12 @@ import javax.xml.bind.annotation.XmlTransient;
     }
     @Column(name = "Immagine")
     private String immagine;
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "Eventi_Artisti", joinColumns = {
         @JoinColumn(name = "evento", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "artista", referencedColumnName = "id")})
-    @ManyToMany
+    
     private Collection<Artista> artistiCollection;
     @JoinColumn(name = "creatore", referencedColumnName = "nickname")
     @ManyToOne(optional = false)
@@ -94,6 +97,7 @@ import javax.xml.bind.annotation.XmlTransient;
         for (Commento c : commentiCollection){
             total += c.getVoto();
         }
+        if (commentiCollection.size()==0) return 0;
         return total/commentiCollection.size();
     }
 
