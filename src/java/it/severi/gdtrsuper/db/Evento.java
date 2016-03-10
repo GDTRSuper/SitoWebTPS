@@ -52,6 +52,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @Basic(optional = false)
     @Column(name = "luogo")
     private String luogo;
+    @Column(name = "descrizione")
+    private String descrizione;
+
+    public String getDescrizione() {
+        return descrizione;
+    }
 
     public String getImmagine() {
         return immagine;
@@ -83,10 +89,10 @@ import javax.xml.bind.annotation.XmlTransient;
         this.id = id;
     }
     
-    public int getMedia(){
+    public float getMedia(){
         int total=0;
         for (Commento c : commentiCollection){
-            total = c.getVoto();
+            total += c.getVoto();
         }
         return total/commentiCollection.size();
     }

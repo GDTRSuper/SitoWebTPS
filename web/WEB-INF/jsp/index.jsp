@@ -110,6 +110,7 @@
                     </div>
 
                 </div>
+        
 
                 <div class="row">
                     <c:forEach items="${ultimiEventi}" var="evento">
@@ -120,14 +121,16 @@
                                 <h4 class="pull-right">${evento.creatore.nome}</h4>
                                 <h4><a href="#">${evento.titolo}</a></h4>
                                 <h5>${evento.categoria.nome}</h5>
-                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                                <p>${evento.descrizione}</p>
                             </div>
                             <div class="ratings">
                                 
                                 <p class="pull-right"> ${evento.getNumCommenti()} commenti</p>
                                 <p>
-                                    <c:forEach begin="0" end="${evento.getMedia()}">
+                                    <c:forEach begin="1" end="${evento.getMedia()}">
                                     <span class="glyphicon glyphicon-star"></span> </c:forEach>
+                                    <c:forEach begin="${evento.getMedia()}" end="4">
+                                    <span  class="half glyphicon glyphicon-star-empty"></span> </c:forEach>
                                 </p>
                             </div>
                         </div>
