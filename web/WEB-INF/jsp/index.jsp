@@ -1,6 +1,7 @@
 <%@page import="it.severi.gdtrsuper.db.Evento"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,12 +120,14 @@
                             <img src="${evento.getImmagine()}" alt="">
                             <div class="caption">
                                 <h4 class="pull-right">${evento.creatore.nome}</h4>
-                                <h4><a href="#">${evento.titolo}</a></h4>
+                                <h4><a href="./evento?id=${evento.id}">${fn:substring(evento.titolo, 0, 20)}</a></h4>
                                 <h5>${evento.categoria.nome}</h5>
                                 <p>${evento.descrizione}</p>
                             </div>
                             <div class="ratings">
-                                
+                                <c:forEach items="${evento.artistiCollection}" var="art">
+                                    test
+                                </c:forEach>
                                 <p class="pull-right"> ${evento.getNumCommenti()} commenti</p>
                                 <p>
                                     <c:forEach begin="1" end="${evento.getMedia()}">
@@ -134,10 +137,9 @@
                                 </p>
                             </div>
                         </div>
+                          </div>
                     </c:forEach>
                   
-                    </div>
-
                  
              
                 </div>
