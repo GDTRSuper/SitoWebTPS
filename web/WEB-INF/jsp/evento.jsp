@@ -112,13 +112,13 @@
                                         <br/>
                                         <p class="rating">
                                             <label>Inserisci il numero di stelle: </label>
-                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="1"></span>
-                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="2"></span>
-                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="3"></span>
-                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="4"></span>
-                                            <span class="ratings_star glyphicon glyphicon-star-empty" data-rating="5"></span>
+                                            <span id="star1" class="ratings_star glyphicon glyphicon-star" data-rating="1"></span>
+                                            <span id="star2" class="ratings_star glyphicon glyphicon-star-empty" data-rating="2"></span>
+                                            <span id="star3" class="ratings_star glyphicon glyphicon-star-empty" data-rating="3"></span>
+                                            <span id="star4" class="ratings_star glyphicon glyphicon-star-empty" data-rating="4"></span>
+                                            <span id="star5" class="ratings_star glyphicon glyphicon-star-empty" data-rating="5"></span>
                                         </p>
-                                        <input type="hidden" id="rating" name="rating" value="-1"> 
+                                        <input type="hidden" id="rating" name="rating" value="1"> 
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
