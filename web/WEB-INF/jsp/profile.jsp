@@ -82,14 +82,15 @@
         <!-- /.row -->
 
         <!-- Portfolio Item Row -->
-        <div class="row">
-
+        <div class="row">           
+            
+            
             <div class="col-md-8">
-                <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+                <img class="img-responsive" src="http://placehold.it/300x300" alt="">
             </div>
 
-            <div class="col-md-4">
-                <h3>Project Description</h3>
+            <div class="col-md-8">
+                <h3>Descrizione Profilo</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
                 <h3>Categorie di interesse:</h3>
                 <ul>
@@ -104,6 +105,7 @@
                     </c:forEach>
                 </ul>
             </div>
+
 
         </div>
         <!-- /.row -->
