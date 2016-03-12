@@ -86,21 +86,25 @@
                         <div class="col-md-12">
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                     <c:forEach items="${ultimiEventi}" var="evento">
+                                         <li data-target="#carousel-example-generic" data-slide-to="0" class="<c:if test="${evento.id == 1}">active</c:if>"></li>
+                                        
+                        </c:forEach>
+                                    
+                                    
+                                     
                                 </ol>
                                 <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <c:forEach items="${ultimiEventi}" var="evento">
+                                        <div class="item <c:if test="${evento.id == 1}">active</c:if> ">
+                               <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
                                     </div>
-                                    <div class="item">
-                                        <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                    </div>
-                                    <div class="item">
-                                        <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                    </div>
+                        </c:forEach>
+                                    
+                                    
                                 </div>
+                                
+                                
                                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
                                 </a>
