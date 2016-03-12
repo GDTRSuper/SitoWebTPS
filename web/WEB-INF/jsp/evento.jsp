@@ -3,6 +3,7 @@
     Created on : 8-mar-2016, 9.43.53
     Author     : FSEVERI\trovo2987
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -118,7 +119,8 @@
                                             <span id="star4" class="ratings_star glyphicon glyphicon-star-empty" data-rating="4"></span>
                                             <span id="star5" class="ratings_star glyphicon glyphicon-star-empty" data-rating="5"></span>
                                         </p>
-                                        <input type="hidden" id="rating" name="rating" value="1"> 
+                                        <input type="hidden" id="rating" name="rating" value="1">
+                                        <input type="hidden" id="evento" name="evento" value="${evento.id}">
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
