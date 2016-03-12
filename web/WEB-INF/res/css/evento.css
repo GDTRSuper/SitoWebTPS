@@ -67,3 +67,7 @@ footer {
     padding: 9px;
     color: #333;
 }
+
+.rating{
+    cursor: pointer;
+}
