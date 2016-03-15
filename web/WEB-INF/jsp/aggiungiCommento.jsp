@@ -3,7 +3,7 @@
     Created on : 15-mar-2016, 8.28.35
     Author     : FSEVERI\trovo2987
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        ${evento.creatore.nickname}
-    <c:forEach items="${evento.commentiCollection}" var="commento">
-        Commenti: ${commento.utente.nickname}
-        ${commento.voto}
-        ${commento.testo}
-    </c:forEach>
-    </body>
+        <c:redirect url="evento?id=${evento.id}"/>
+</body>
 </html>
