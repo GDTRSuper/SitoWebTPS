@@ -38,6 +38,7 @@ public class EventoController {
         com.setEvento(evento);
         com.setUtente(null);
         db.salvaCommento(com);
+        db.aggiornaEvento(evento);
         map.put("evento",evento);
         return "aggiungiCommento";
     }
