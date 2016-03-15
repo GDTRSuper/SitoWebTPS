@@ -5,6 +5,8 @@
  */
 package it.severi.gdtrsuper.controllers;
 
+import it.severi.gdtrsuper.db.Commento;
+import it.severi.gdtrsuper.db.Evento;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +29,15 @@ public class EventoController {
     }
     
     @RequestMapping(value="/aggiungiEvento",method=RequestMethod.POST)
-    public String index1(ModelMap map, @RequestParam(value="nuovoCommento", required=true)String commento, @RequestParam(value="rating", required=true)int rating){
-        //map.put("evento", db.getEventoById(id));
+    public String aggiugniEvento(ModelMap map, @RequestParam(value="nuovoCommento", required=true)String commento, @RequestParam(value="rating", required=true)short rating, @RequestParam(value="evento", required=true)int id){
+        Evento evento = db.getEventoById(id);
+        Commento com = new Commento();
+        if(commento.isEmpty()) return "errorPage";
+        else com.setTesto(commento);
+        com.setVoto(rating);
+        com.setEvento(evento);
+        com.setUtente(null);
+        evento.aggiungiCommento(com);
         return "evento";
     }
 }
