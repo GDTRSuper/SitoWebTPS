@@ -36,9 +36,9 @@ public class EventoController {
         else com.setTesto(commento);
         com.setVoto(rating);
         com.setEvento(evento);
-        com.setUtente(null);
+        com.setUtente(db.getUtenteByNick("bruno"));
         db.salvaCommento(com);
-        db.aggiornaEvento(evento);
+        // db.aggiornaEvento(evento);
         map.put("evento",evento);
         return "aggiungiCommento";
     }
