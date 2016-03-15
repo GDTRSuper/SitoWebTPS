@@ -28,7 +28,7 @@ public class EventoController {
         return "evento";
     }
     
-    @RequestMapping(value="/aggiungiEvento",method=RequestMethod.POST)
+    @RequestMapping(value="/aggiungiCommento",method=RequestMethod.POST)
     public String aggiugniEvento(ModelMap map, @RequestParam(value="nuovoCommento", required=true)String commento, @RequestParam(value="rating", required=true)short rating, @RequestParam(value="evento", required=true)int id){
         Evento evento = db.getEventoById(id);
         Commento com = new Commento();
@@ -38,6 +38,7 @@ public class EventoController {
         com.setEvento(evento);
         com.setUtente(null);
         db.salvaCommento(com);
-        return "evento";
+        map.put("evento",evento);
+        return "aggiungiCommento";
     }
 }
