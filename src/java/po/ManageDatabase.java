@@ -9,6 +9,7 @@ import it.severi.gdtrsuper.db.Artista;
 import it.severi.gdtrsuper.db.Categoria;
 import it.severi.gdtrsuper.db.Commento;
 import it.severi.gdtrsuper.db.Evento;
+import it.severi.gdtrsuper.db.Utente;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -214,6 +215,30 @@ public class ManageDatabase {
             }
             tx.commit();
             return ret;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return null;
+    }
+    
+    public Utente getUtenteByNick(String nick){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Utente where nickname = ?");
+            query.setString(0, nick);
+             List utenti = query.list();
+            if (utenti.size() > 0) {
+                return (Utente) utenti.get(0);
+            }
+            tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
