@@ -37,7 +37,7 @@ public class EventoController {
         com.setVoto(rating);
         com.setEvento(evento);
         com.setUtente(null);
-        evento.aggiungiCommento(com);
+        db.salvaCommento(com);
         return "evento";
     }
 }
