@@ -62,6 +62,7 @@
                         <a href="#">Contact</a>
                     </li>
                 </ul>
+                <%@include file="search-field.jsp" %>
             </div>
             <!-- /.navbar-collapse -->
         </div>

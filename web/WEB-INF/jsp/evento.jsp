@@ -63,6 +63,7 @@
                             <a href="#">Contatti</a>
                         </li>
                     </ul>
+                    <%@include file="search-field.jsp" %>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
@@ -137,7 +138,9 @@
                                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                                     </a>
                                     <div class="media-body">
+                                        <a href="./user?nick=${commento.utente.nickname}">
                                         <h4 class="media-heading">${commento.utente.nickname}
+                                        </a>
                                             <small class="ratings">
                                                 <c:forEach begin="1" end="${commento.voto}">
                                                     <span class="glyphicon glyphicon-star"></span> </c:forEach>

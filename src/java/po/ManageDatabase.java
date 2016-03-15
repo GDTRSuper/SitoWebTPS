@@ -106,6 +106,28 @@ public class ManageDatabase {
         return null;
     }
 
+    public List<Evento> cercaEvento(String param) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("Select * from Eventi where titolo LIKE :searchKeyword");
+            query.setParameter("searchKeyword", "%"+param+"%");
+           
+            List risultati = query.list();
+            return risultati;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return null;
+    }
+
     public Artista getArtistaByID(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -115,6 +137,7 @@ public class ManageDatabase {
             query.setInteger("id", id);
 
             List persone = query.list();
+
             if (persone.size() > 0) {
                 return (Artista) persone.get(0);
             }

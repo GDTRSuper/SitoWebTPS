@@ -13,7 +13,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>${cat.nome}</title>
+        <title>Sito TPS</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="./res/css/bootstrap.min.css" rel="stylesheet">
@@ -70,79 +70,36 @@
 
             <div class="row">
 
-                <div class="col-md-3">
-                    <p class="lead">${cat.nome}</p>
-                    <div class="list-group">
-                        <c:forEach items="${cats}" var="cat">
-
-                            <a href="./categoria?id=${cat.id}" class="list-group-item">${cat.getNome()}</a>
-                        </c:forEach>
-                    </div>
-                </div>
-
-                <div class="col-md-10">
-
-                 
-
-                    <div class="row">
-                        <c:forEach items="${ultimiEventi}" var="evento">
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="${evento.getImmagine()}" alt="">
-                                    <div class="caption">
-                                        <h4 class="pull-right">${evento.creatore.nome}</h4>
-                                        <h4><a href="./evento?id=${evento.id}">${fn:substring(evento.titolo, 0, 20)}</a></h4>
-                                        <h5>${evento.categoria.nome}</h5>
-                                        <p>${evento.descrizione}</p>
-                                    </div>
-                                    <div class="ratings">
-                                         
-                                        <p class="pull-right"> ${evento.getNumCommenti()} commenti</p>
-                                        <p>
-                                            <c:forEach begin="1" end="${evento.getMedia()}">
-                                                <span class="glyphicon glyphicon-star"></span> </c:forEach>
-                                            <c:forEach begin="${evento.getMedia()}" end="4">
-                                                <span  class="half glyphicon glyphicon-star-empty"></span> </c:forEach>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                        </c:forEach>
-
-
-
-                    </div>
-
-                </div>
-
             </div>
 
         </div>
-        <!-- /.container -->
-        <c:forEach items="${artisti}" var="artista">
-            ${artista.nome} ${artista.cognome}
-        </c:forEach>
-        <div class="container">
 
-            <hr>
+    </div>
+    <!-- /.container -->
 
-            <!-- Footer -->
-            <footer>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; Your Website 2014</p>
-                    </div>
+    <div class="container">
+
+        <hr>
+  <c:forEach items="${eventi}" var="evento">
+                ${evento.nome}
+                </c:forEach> 
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
                 </div>
-            </footer>
+            </div>
+        </footer>
 
-        </div>
-        <!-- /.container -->
+    </div>
+    <!-- /.container -->
 
-        <!-- jQuery -->
-        <script src="./res/js/jquery.js"></script>
+    <!-- jQuery -->
+    <script src="./res/js/jquery.js"></script>
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="./res/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./res/js/bootstrap.min.js"></script>
 
-    </body>
+</body>
 </html>

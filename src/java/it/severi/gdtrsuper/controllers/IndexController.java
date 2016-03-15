@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package it.severi.gdtrsuper.controllers;  
+import it.severi.gdtrsuper.db.Evento;
+import java.util.List;
 import po.ManageDatabase;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,6 +33,13 @@ public class IndexController {
        map.put("ultimiEventi", db.getCategoriaByID(id).getEventiCollection());
        map.put("cat", db.getCategoriaByID(id));
         return "categoria";
+    }
+    
+     @RequestMapping(value="/search",method=RequestMethod.GET)
+    public String search(ModelMap map, @RequestParam(value="srch-term") String param){
+       List<Evento> eventi =db.cercaEvento(param);
+       map.put("eventi",eventi);
+       return "search";
     }
   
   
