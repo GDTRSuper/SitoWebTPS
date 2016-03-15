@@ -60,6 +60,9 @@ import javax.xml.bind.annotation.XmlTransient;
         return descrizione;
     }
 
+    public void aggiungiCommento(Commento c){
+        commentiCollection.add(c);
+    }
     
     public String getImmagine() {
         return immagine;
@@ -81,7 +84,7 @@ import javax.xml.bind.annotation.XmlTransient;
     private Categoria categoria;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "evento")
     private Collection<Commento> commentiCollection;
-
+        
     public int getNumCommenti(){
         return commentiCollection.size();
     }
