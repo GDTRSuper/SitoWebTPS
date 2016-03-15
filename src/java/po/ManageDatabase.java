@@ -32,28 +32,47 @@ public class ManageDatabase {
         Transaction tx = null;
         Query q = session.createSQLQuery("SELECT * FROM Eventi where id = ?").addEntity(Evento.class);
         q.setInteger(0, id);
-        if (q.list().size() >0){
-            Evento e =(Evento)q.list().get(0);
+        if (q.list().size() > 0) {
+            Evento e = (Evento) q.list().get(0);
             Collection<Commento> commenti = e.getCommentiCollection();
-            int total=0;
-            for (Commento c : commenti){
-                total +=c.getVoto();
+            int total = 0;
+            for (Commento c : commenti) {
+                total += c.getVoto();
             }
-            return total/commenti.size();
+            return total / commenti.size();
         }
-         
+
         return 0;
-        
+
     }
-    
-    public List<Evento> getEventi(){
+
+    public void salvaEvento(Evento e) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+
+            session.beginTransaction();
+
+            session.save(e);
+
+            session.getTransaction().commit();
+
+        } catch (HibernateException ex) {
+
+            ex.printStackTrace();
+
+            session.getTransaction().rollback();
+
+        }
+    }
+
+    public List<Evento> getEventi() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        
-        try { 
-           tx = session.beginTransaction();
-           Query q = session.createSQLQuery("SELECT * FROM Eventi order by id DESC limit 10").addEntity(Evento.class);
-          return q.list();
+
+        try {
+            tx = session.beginTransaction();
+            Query q = session.createSQLQuery("SELECT * FROM Eventi order by id DESC limit 10").addEntity(Evento.class);
+            return q.list();
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
@@ -64,15 +83,18 @@ public class ManageDatabase {
         }
         return null;
     }
-    public Evento getEventoById(int id){
+
+    public Evento getEventoById(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
-        
-        try { 
-           tx = session.beginTransaction();
-           Query q = session.createSQLQuery("SELECT * FROM Eventi where id= ? ").addEntity(Evento.class);
-           q.setInteger(0, id);
-           if (q.list().size()>0) return (Evento)q.list().get(0);
+
+        try {
+            tx = session.beginTransaction();
+            Query q = session.createSQLQuery("SELECT * FROM Eventi where id= ? ").addEntity(Evento.class);
+            q.setInteger(0, id);
+            if (q.list().size() > 0) {
+                return (Evento) q.list().get(0);
+            }
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
@@ -83,6 +105,7 @@ public class ManageDatabase {
         }
         return null;
     }
+
     public Artista getArtistaByID(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
@@ -106,7 +129,9 @@ public class ManageDatabase {
         }
 
         return null;
-    }public Categoria getCategoriaByID(int id) {
+    }
+
+    public Categoria getCategoriaByID(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -117,7 +142,7 @@ public class ManageDatabase {
             List cats = query.list();
             if (cats.size() > 0) {
                 return (Categoria) cats.get(0);
-            } 
+            }
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
@@ -226,15 +251,15 @@ public class ManageDatabase {
 
         return null;
     }
-    
-    public Utente getUtenteByNick(String nick){
+
+    public Utente getUtenteByNick(String nick) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             Query query = session.createQuery("from Utente where nickname = ?");
             query.setString(0, nick);
-             List utenti = query.list();
+            List utenti = query.list();
             if (utenti.size() > 0) {
                 return (Utente) utenti.get(0);
             }
