@@ -52,7 +52,7 @@ public class ManageDatabase {
 
             session.beginTransaction();
 
-            session.save(e);
+            session.update(e);
 
             session.getTransaction().commit();
 
