@@ -52,7 +52,7 @@ public class ManageDatabase {
 
             session.beginTransaction();
 
-            session.update(c);
+            session.saveOrUpdate(c);
 
             session.getTransaction().commit();
 
@@ -65,13 +65,13 @@ public class ManageDatabase {
         }
     }
 
-    public void salvaEvento(Evento e) {
+    public void aggiornaEvento(Evento e) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
 
             session.beginTransaction();
 
-            session.update(e);
+            session.saveOrUpdate(e);
 
             session.getTransaction().commit();
 
