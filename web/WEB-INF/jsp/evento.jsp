@@ -108,7 +108,7 @@
                             <!-- Leave a comment -->
                             <div class="well">
                                 <h4>Leave a Comment:</h4>
-                                <form role="form" action="./aggiungiComento" method="POST">
+                                <form role="form" action="./aggiungiCommento" method="POST">
                                     <div class="form-group">
                                         <textarea class="form-control" rows="3" name="nuovoCommento"></textarea>
                                         <br/>

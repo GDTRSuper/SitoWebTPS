@@ -32,7 +32,7 @@ public class IndexController {
     public String cats(ModelMap map, @RequestParam(value="id") Integer id){
        map.put("ultimiEventi", db.getCategoriaByID(id).getEventiCollection());
        map.put("cat", db.getCategoriaByID(id));
-        return "categoria";
+       return "categoria";
     }
     
      @RequestMapping(value="/search",method=RequestMethod.GET)
