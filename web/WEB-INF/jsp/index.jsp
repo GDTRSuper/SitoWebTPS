@@ -57,6 +57,9 @@
                         <li>
                             <a href="#">Contact</a>
                         </li>
+                        <li>
+                            <a href="./user?nick=bruno">Profile</a>
+                        </li>
                     </ul>
                     <%@include file="search-field.jsp" %>
                 </div>
