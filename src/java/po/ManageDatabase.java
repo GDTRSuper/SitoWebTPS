@@ -130,10 +130,11 @@ public class ManageDatabase {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            Query query = session.createQuery("Select * from Eventi where titolo LIKE :searchKeyword");
+            Query query = session.createQuery("from Evento where titolo LIKE :searchKeyword");
             query.setParameter("searchKeyword", "%"+param+"%");
-           
+            
             List risultati = query.list();
+            System.out.println("Ris: "+risultati);
             return risultati;
         } catch (HibernateException e) {
             if (tx != null) {

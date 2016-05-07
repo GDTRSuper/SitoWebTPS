@@ -57,6 +57,35 @@
                         <li>
                             <a href="#">Contact</a>
                         </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                            <ul id="login-dp" class="dropdown-menu">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                                                </div>
+                                                <div style="text-align:center"> <br> <b>Oppure</b><div>
+                                                        <a href="./register" class="text-center new-account"><h4>Crea un account</h4> </a>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                     <%@include file="search-field.jsp" %>
                 </div>
@@ -87,25 +116,25 @@
                         <div class="col-md-12">
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                     <c:forEach items="${ultimiEventi}" var="evento">
-                                         <li data-target="#carousel-example-generic" data-slide-to="0" class="<c:if test="${evento.id == 1}">active</c:if>"></li>
-                                        
-                        </c:forEach>
-                                    
-                                    
-                                     
+                                    <c:forEach items="${ultimiEventi}" var="evento">
+                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="<c:if test="${evento.id == 1}">active</c:if>"></li>
+
+                                    </c:forEach>
+
+
+
                                 </ol>
                                 <div class="carousel-inner">
                                     <c:forEach items="${ultimiEventi}" var="evento">
                                         <div class="item <c:if test="${evento.id == 1}">active</c:if> ">
-                               <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
-                                    </div>
-                        </c:forEach>
-                                    
-                                    
+                                            <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
+                                        </div>
+                                    </c:forEach>
+
+
                                 </div>
-                                
-                                
+
+
                                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
                                 </a>
@@ -130,7 +159,7 @@
                                         <p>${evento.descrizione}</p>
                                     </div>
                                     <div class="ratings">
-                                         
+
                                         <p class="pull-right"> ${evento.getNumCommenti()} commenti</p>
                                         <p>
                                             <c:forEach begin="1" end="${evento.getMedia()}">
