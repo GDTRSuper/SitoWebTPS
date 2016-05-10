@@ -83,6 +83,25 @@ public class ManageDatabase {
 
         }
     }
+    
+    public void salvaUtente(Utente e) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+
+            session.beginTransaction();
+
+            session.saveOrUpdate(e);
+
+            session.getTransaction().commit();
+
+        } catch (HibernateException ex) {
+
+            ex.printStackTrace();
+
+            session.getTransaction().rollback();
+
+        }
+    }
 
     public List<Evento> getEventi() {
         Session session = HibernateUtil.getSessionFactory().openSession();
