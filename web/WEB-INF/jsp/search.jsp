@@ -80,9 +80,9 @@
     <div class="container">
 
         <hr>
-  <c:forEach items="${eventi}" var="evento">
-                ${evento.nome}
-                </c:forEach> 
+        <c:forEach items="${eventi}" var="evento">
+            ${evento.titolo}
+        </c:forEach> 
         <!-- Footer -->
         <footer>
             <div class="row">

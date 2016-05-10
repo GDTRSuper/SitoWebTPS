@@ -32,6 +32,7 @@
 
     <body>
 
+<%@include file="menu.jsp" %>
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
@@ -90,25 +91,25 @@
                         <div class="col-md-12">
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                     <c:forEach items="${ultimiEventi}" var="evento">
-                                         <li data-target="#carousel-example-generic" data-slide-to="0" class="<c:if test="${evento.id == 1}">active</c:if>"></li>
-                                        
-                        </c:forEach>
-                                    
-                                    
-                                     
+                                    <c:forEach items="${ultimiEventi}" var="evento">
+                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="<c:if test="${evento.id == 1}">active</c:if>"></li>
+
+                                    </c:forEach>
+
+
+
                                 </ol>
                                 <div class="carousel-inner">
                                     <c:forEach items="${ultimiEventi}" var="evento">
                                         <div class="item <c:if test="${evento.id == 1}">active</c:if> ">
-                               <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
-                                    </div>
-                        </c:forEach>
-                                    
-                                    
+                                            <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
+                                        </div>
+                                    </c:forEach>
+
+
                                 </div>
-                                
-                                
+
+
                                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                                     <span class="glyphicon glyphicon-chevron-left"></span>
                                 </a>
@@ -133,7 +134,7 @@
                                         <p>${evento.descrizione}</p>
                                     </div>
                                     <div class="ratings">
-                                         
+
                                         <p class="pull-right"> ${evento.getNumCommenti()} commenti</p>
                                         <p>
                                             <c:forEach begin="1" end="${evento.getMedia()}">

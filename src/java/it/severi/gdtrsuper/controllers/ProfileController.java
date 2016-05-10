@@ -6,11 +6,14 @@
 package it.severi.gdtrsuper.controllers;
 
 import it.severi.gdtrsuper.db.Utente;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import po.ManageDatabase;
 
 /**
@@ -29,6 +32,30 @@ public class ProfileController {
         map.put("categorie",u.getCategorieCollection());
         return "profile";
     }
+    
+    
+    @RequestMapping(value="/checklogin",method=RequestMethod.POST)
+    @ResponseBody
+    public String checklogin(@RequestParam(value="username") String username,@RequestParam(value="password") String password,HttpServletRequest request){
+        
+        Utente u = db.getUtenteByNick(username);
+        if(u.getNickname().equals(username) && u.getPassword().equals(password)){
+            request.getSession().setAttribute("utente", u);
+            return "redirect:/";
+        }else{
+             return "failed";
+        }
+
+    }
+    
+    @RequestMapping(value="/logout",method=RequestMethod.GET)
+    public String logout(ModelMap map,HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/";
+
+    }
+  
+  
          
     @RequestMapping(value="/modify",method=RequestMethod.GET)
     public String mods(ModelMap map){
