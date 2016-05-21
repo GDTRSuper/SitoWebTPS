@@ -35,15 +35,15 @@ public class ProfileController {
     
     
     @RequestMapping(value="/checklogin",method=RequestMethod.POST)
-    @ResponseBody
-    public String checklogin(@RequestParam(value="username") String username,@RequestParam(value="password") String password,HttpServletRequest request){
+    public @ResponseBody String checklogin(@RequestParam(value="username") String username,@RequestParam(value="password") String password,HttpServletRequest request){
         
         Utente u = db.getUtenteByNick(username);
+        if(u==null)return "false";
         if(u.getNickname().equals(username) && u.getPassword().equals(password)){
             request.getSession().setAttribute("utente", u);
-            return "redirect:/";
+            return "true";
         }else{
-             return "failed";
+             return "false";
         }
 
     }
