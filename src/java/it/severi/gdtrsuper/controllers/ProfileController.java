@@ -79,4 +79,14 @@ public class ProfileController {
         }
         return"ModificaInformazioni";
     }
+    
+    @RequestMapping(value="/modificaNCE",method=RequestMethod.GET)
+    public String boh(ModelMap map, @RequestParam(value="email") String email, @RequestParam(value="nome") String nome, @RequestParam(value="cognome") String cognome){
+        //System.out.println("nome: "+nome);
+        if(!email.isEmpty()) u.setEmail(email);
+        if(!nome.isEmpty()) u.setNome(nome);
+        if(!cognome.isEmpty()) u.setCognome(cognome);
+        db.salvaUtente(u);
+        return "redirect:/user?nick=bruno";
+    }
 }
