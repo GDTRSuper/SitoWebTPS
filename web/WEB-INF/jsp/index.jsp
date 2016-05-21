@@ -18,7 +18,8 @@
         <!-- Bootstrap Core CSS -->
         <link href="./res/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom CSS -->
+        <!-- Custom CSS -->  <!-- jQuery -->
+        <script src="./res/js/jquery.js"></script>
         <link href="./res/css/shop-homepage.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -140,9 +141,6 @@
 
         </div>
         <!-- /.container -->
-
-        <!-- jQuery -->
-        <script src="./res/js/jquery.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
         <script src="./res/js/bootstrap.min.js"></script>

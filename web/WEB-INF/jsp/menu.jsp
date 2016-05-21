@@ -33,7 +33,6 @@
                         <li>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form class="form" role="form" method="post" accept-charset="UTF-8" id="login-nav">
                                         <div class="form-group">
                                             <label class="sr-only">Username</label>
                                             <input type="text" class="form-control" name="username" id="user" placeholder="Username" required>
@@ -49,7 +48,6 @@
                                                 <a href="./register" class="text-center new-account"><h4>Crea un account</h4> </a>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                         </li>
@@ -64,15 +62,15 @@
     </div>
     <script>
         $('document').ready(function () {
-            $('loginButton').click(function () {
+            $('button#loginButton').click(function () {
                 
-                var username = $("input#user").value();
-                var password = $("input#pass").value();
+                var username = $("input#user").val();
+                var password = $("input#pass").val();
                 
                 $.ajax({
                     method: "POST",
                     url: "./checklogin",
-                    data: {username: username, location: password}
+                    data: {username: username, password: password}
                 })
                         .done(function (msg) {
                             alert("Data Saved: " + msg);
