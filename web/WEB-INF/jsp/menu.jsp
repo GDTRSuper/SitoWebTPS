@@ -27,32 +27,39 @@
 
                         out.println("<li><a href='./logout'>Logout</a></li>");
                     } else {%>
-                <li class="dropdown">
+                    <li <%if(request.getParameter("failed")!=null &&request.getParameter("failed").equals("true")){%>aria-expanded="true"  class="dropdown open" <%}else{%>class="dropdown"<%}%>>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
                     <ul id="login-dp" class="dropdown-menu">
-                        <li>
+                        <form>
+                                                   <li>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form class="form" role="form" method="post" accept-charset="UTF-8" id="login-nav">
-                                        <div class="form-group">
-                                            <label class="sr-only">Username</label>
-                                            <input type="text" class="form-control" name="username" id="user" placeholder="Username" required>
+                                    <div class="form-group">
+                                        <label class="sr-only">Username</label>
+                                        <input type="text" class="form-control" name="username" id="user" placeholder="Username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only">Password</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Password" id="pass" required>
+                                    </div>
+                                     <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block" id="loginButton">Log in</button>
+                                    <%if(request.getParameter("failed")!=null && request.getParameter("failed").equals("true")){%>
+                                    <h4 style="text-align:center;color:red">Login errato</h4>
+                                    <%}%>
+                                   
+                                    </div>
+                                    <div style="text-align:center"><b>Oppure</b>
+                                        <div>
+                                            <a href="./register" class="text-center new-account"><h4>Crea un account</h4> </a>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="sr-only">Password</label>
-                                            <input type="password" class="form-control" name="password" placeholder="Password" id="pass" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block" id="loginButton">Log in</button>
-                                        </div>
-                                        <div style="text-align:center"> <br> <b>Oppure</b><div>
-                                                <a href="./register" class="text-center new-account"><h4>Crea un account</h4> </a>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </li>
+                            
+                        </form>
+ 
                     </ul>
                 </li>
                 <% }
@@ -64,18 +71,22 @@
     </div>
     <script>
         $('document').ready(function () {
-            $('loginButton').click(function () {
-                
-                var username = $("input#user").value();
-                var password = $("input#pass").value();
-                
+            $('button#loginButton').click(function () {
+
+                var username = $("input#user").val();
+                var password = $("input#pass").val();
+
                 $.ajax({
                     method: "POST",
                     url: "./checklogin",
-                    data: {username: username, location: password}
+                    data: {username: username, password: password}
                 })
                         .done(function (msg) {
-                            alert("Data Saved: " + msg);
+                            if (msg == "true")
+                                window.location.href = "./";
+                            else
+                                window.location.href = "?failed=true";
+
                         });
             });
         });
