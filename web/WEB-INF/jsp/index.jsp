@@ -59,7 +59,7 @@
                             <a href="#">Contact</a>
                         </li>
                         <li>
-                            <a href="./user?nick=bruno">Profile</a>
+                            <a href="./user?nick=Bruno">Profile</a>
                         </li>
                     </ul>
                     <%@include file="search-field.jsp" %>
