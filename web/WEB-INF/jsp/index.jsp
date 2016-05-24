@@ -68,8 +68,6 @@
                                     <c:forEach items="${ultimiEventi}" var="evento">
                                         <div class="item<c:if test="${evento.id == 1}"> active</c:if>" style="height: 350px">
                                             <img class="slide-image"  src="${evento.immagine}" style="height: inherit" alt="${evento.titolo}">
-                                            <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
-                                            <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
                                         </div>
                                     </c:forEach>
 
