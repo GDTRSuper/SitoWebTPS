@@ -126,4 +126,5 @@ public class ProfileController {
         db.salvaUtente(u);
         return "redirect:/user?nick=bruno";
     }
+    
 }
