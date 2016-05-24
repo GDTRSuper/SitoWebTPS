@@ -18,8 +18,8 @@
         <!-- Bootstrap Core CSS -->
         <link href="./res/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom CSS -->  <!-- jQuery -->
-        <script src="./res/js/jquery.js"></script>
+        <!-- Custom CSS -->
+        <link href="./res/css/typeAhead.css" rel="stylesheet">
         <link href="./res/css/shop-homepage.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -68,81 +68,4 @@
                                     <c:forEach items="${ultimiEventi}" var="evento">
                                         <div class="item<c:if test="${evento.id == 1}"> active</c:if>" style="height: 350px">
                                             <img class="slide-image"  src="${evento.immagine}" style="height: inherit" alt="${evento.titolo}">
-                                        </div>
-                                    </c:forEach>
-
-
-                                </div>
-
-
-                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-
-
-                    <div class="row">
-                        <c:forEach items="${ultimiEventi}" var="evento">
-                            <div class="col-sm-4 col-lg-4 col-md-4">
-                                <div class="thumbnail">
-                                    <img src="${evento.getImmagine()}" alt="">
-                                    <div class="caption">
-                                        <h4 class="pull-right">${evento.creatore.nome}</h4>
-                                        <h4><a href="./evento?id=${evento.id}">${fn:substring(evento.titolo, 0, 20)}</a></h4>
-                                        <h5>${evento.categoria.nome}</h5>
-                                        <p>${evento.descrizione}</p>
-                                    </div>
-                                    <div class="ratings">
-
-                                        <p class="pull-right"> ${evento.getNumCommenti()} commenti</p>
-                                        <p>
-                                            <c:forEach begin="1" end="${evento.getMedia()}">
-                                                <span class="glyphicon glyphicon-star"></span> </c:forEach>
-                                            <c:forEach begin="${evento.getMedia()}" end="4">
-                                                <span  class="half glyphicon glyphicon-star-empty"></span> </c:forEach>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                        </c:forEach>
-
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-        <!-- /.container -->
-        <c:forEach items="${artisti}" var="artista">
-            ${artista.nome} ${artista.cognome}
-        </c:forEach>
-        <div class="container">
-
-            <hr>
-
-            <!-- Footer -->
-            <footer>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; Your Website 2014</p>
-                    </div>
-                </div>
-            </footer>
-
-        </div>
-        <!-- /.container -->
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="./res/js/bootstrap.min.js"></script>
-
-    </body>
-</html>
+                                            <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
