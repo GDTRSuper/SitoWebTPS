@@ -8,6 +8,7 @@ package it.severi.gdtrsuper.controllers;
 import it.severi.gdtrsuper.db.Artista;
 import it.severi.gdtrsuper.db.Commento;
 import it.severi.gdtrsuper.db.Evento;
+import it.severi.gdtrsuper.db.Utente;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -54,13 +55,13 @@ public class EventoController {
         return "nuovoEvento";
     }
     @RequestMapping(value="/aggiungiEvento",method=RequestMethod.GET)
-    public String aggiugniEvento(ModelMap map,/*@ModelAttribute("utente") Utente user,*/ @RequestParam(value="titolo", required=true) String titolo, @RequestParam(value="data", required=true) Date data, @RequestParam(value="luogo", required=true) String luogo, @RequestParam(value="descrizione", required=true)String descr, @RequestParam(value="immagine", required=true)String img, @RequestParam(value="categoria", required=true)int cat,@RequestParam(value="artisti", required=false)ArrayList<Integer> artisti){
+    public String aggiugniEvento(ModelMap map,@ModelAttribute("utente") Utente user, @RequestParam(value="titolo", required=true) String titolo, @RequestParam(value="data", required=true) Date data, @RequestParam(value="luogo", required=true) String luogo, @RequestParam(value="descrizione", required=true)String descr, @RequestParam(value="immagine", required=true)String img, @RequestParam(value="categoria", required=true)int cat,@RequestParam(value="artisti", required=false)ArrayList<Integer> artisti){
         Evento evento = new Evento();
         evento.setCategoria(db.getCategoriaByID(cat));
         evento.setTitolo(titolo);
         evento.setData(data);
         evento.setLuogo(luogo);
-        evento.setCreatore(db.getUtenteByNick("bruno"));
+        evento.setCreatore(db.getUtenteByNick(user.getNickname()));
         evento.setDescrizione(descr);
         evento.setImmagine(img);
         Collection<Artista> arts = new ArrayList<>();
@@ -70,7 +71,6 @@ public class EventoController {
             }
         }
         evento.setArtistiCollection(arts);
-        //evento.setCreatore(user);
         db.aggiornaEvento(evento);
         System.out.println("evento: "+evento);
         List<Evento> v = db.cercaEvento(titolo);
