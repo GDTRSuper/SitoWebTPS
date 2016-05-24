@@ -17,7 +17,7 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="./res/css/bootstrap.min.css" rel="stylesheet">
-
+        <script src="./res/js/jquery.js"></script>
         <!-- Custom CSS -->
         <link href="./res/css/typeAhead.css" rel="stylesheet">
         <link href="./res/css/shop-homepage.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     <body>
 
-<jsp:include page="menu.jsp" />
+        <jsp:include page="menu.jsp" />
         <!-- Page Content -->
         <div class="container">
 
@@ -67,6 +67,8 @@
                                 <div class="carousel-inner">
                                     <c:forEach items="${ultimiEventi}" var="evento">
                                         <div class="item <c:if test="${evento.id == 1}">active</c:if>" style="height:350px">
+
+                                           
                                             <img class="slide-image"  src="${evento.immagine}" style="height: inherit" alt="${evento.titolo}">
                                         </div>
                                     </c:forEach>

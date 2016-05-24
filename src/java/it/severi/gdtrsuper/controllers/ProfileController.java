@@ -82,11 +82,6 @@ public class ProfileController {
         return "ModificaInformazioni";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String registerP(ModelMap map) {
-        return "register";
-    }
-
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String registerP(ModelMap map, @RequestParam(value = "username") String nickname,
             @RequestParam(value = "password") String password,
