@@ -126,6 +126,14 @@ import javax.xml.bind.annotation.XmlTransient;
         this.titolo = titolo;
     }
 
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
+    }
+
     public Date getData() {
         return data;
     }
@@ -198,7 +206,9 @@ import javax.xml.bind.annotation.XmlTransient;
 
     @Override
     public String toString() {
-        return "it.severi.gdtrsuper.db.Eventi[ id=" + id + " ]";
+        return "Evento{" + "id=" + id + ", titolo=" + titolo + ", data=" + data + ", luogo=" + luogo + ", descrizione=" + descrizione + ", immagine=" + immagine + ", artistiCollection=" + artistiCollection + ", creatore=" + creatore + ", categoria=" + categoria + ", commentiCollection=" + commentiCollection + '}';
     }
+
+    
     
 }
