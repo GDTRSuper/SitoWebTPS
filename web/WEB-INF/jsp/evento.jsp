@@ -22,7 +22,7 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="./res/css/bootstrap.min.css" rel="stylesheet">
-
+        <script src="./res/js/jquery.js"></script>
         <!-- Custom CSS -->
         <link href="./res/css/evento.css" rel="stylesheet">
         
@@ -37,38 +37,7 @@
 
     <body>
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="./">Home Page</a>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="#">Categorie</a>
-                        </li>
-                        <li>
-                            <a href="#"></a>
-                        </li>
-                        <li>
-                            <a href="#">Contatti</a>
-                        </li>
-                    </ul>
-                    <%@include file="search-field.jsp" %>
-                </div>
-                <!-- /.navbar-collapse -->
-            </div>
-            <!-- /.container -->
-        </nav>
+        <jsp:include page="menu.jsp" />
 
         <!-- Page Content -->
         <div class="container">
@@ -81,7 +50,7 @@
 
                         <div class="col-md-12">
                             <div class="thumbnail">
-                                <img src="${evento.getImmagine()}" alt="">
+                                <img src="${evento.getImmagine()}" style="height: 400px" alt="${evento.getTitolo()}">
                                 <div class="evento">
                                     <h3 class="pull-right">${evento.creatore.nickname}</h3>
                                     <h3><a href="">${evento.titolo}</a></h3>

@@ -64,10 +64,10 @@
 
 
                                 </ol>
-                                <div class="carousel-inner" style="height: 350px">
+                                <div class="carousel-inner">
                                     <c:forEach items="${ultimiEventi}" var="evento">
-                                        <div class="item <c:if test="${evento.id == 1}">active</c:if> ">
-                                            <img class="slide-image" width="800" height="100%" src="${evento.immagine}" alt="${evento.titolo}">
+                                        <div class="item<c:if test="${evento.id == 1}"> active</c:if>" style="height: 350px">
+                                            <img class="slide-image"  src="${evento.immagine}" style="height: inherit" alt="${evento.titolo}">
                                         </div>
                                     </c:forEach>
 
