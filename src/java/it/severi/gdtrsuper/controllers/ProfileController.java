@@ -26,8 +26,8 @@ public class ProfileController {
     Utente u;
     
     @RequestMapping(value="/user",method=RequestMethod.GET)
-    public String cats(ModelMap map, @RequestParam(value="nick") String nick){
-        u = db.getUtenteByNick(nick);
+    public String cats(ModelMap map,HttpServletRequest request){
+        u = (Utente)request.getSession().getAttribute("utente");
         map.put("utente",u);
         map.put("categorie",u.getCategorieCollection());
         return "profile";
