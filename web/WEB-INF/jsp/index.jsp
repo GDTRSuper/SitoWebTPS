@@ -18,8 +18,8 @@
         <!-- Bootstrap Core CSS -->
         <link href="./res/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom CSS -->  <!-- jQuery -->
-        <script src="./res/js/jquery.js"></script>
+        <!-- Custom CSS -->
+        <link href="./res/css/typeAhead.css" rel="stylesheet">
         <link href="./res/css/shop-homepage.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -64,10 +64,14 @@
 
 
                                 </ol>
-                                <div class="carousel-inner">
+                                <div class="carousel-inner" style="height: 350px">
                                     <c:forEach items="${ultimiEventi}" var="evento">
                                         <div class="item <c:if test="${evento.id == 1}">active</c:if> ">
+<<<<<<< HEAD (85c68c5) - 
                                             <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
+=======
+                                            <img class="slide-image" width="800" height="100%" src="${evento.immagine}" alt="${evento.titolo}">
+>>>>>>> origin/master (03956e8) - test
                                         </div>
                                     </c:forEach>
 
@@ -143,6 +147,21 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="./res/js/bootstrap.min.js"></script>
+
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="./res/js/typeAhead.js"></script>
+
+        <script>
+
+            $('#query').typeahead({
+               remote: 'getEventi?a=%QUERY'
+            });
+            $('.tt-query').css('background-color', '#fff');
+ 
+
+
+        </script>
 
     </body>
 </html>

@@ -16,26 +16,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="GET" action="./modificaNCE">
                         <fieldset>
                             <legend>Modify personal information</legend>
                             <div class="form-group">
                                 <label  class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="inputEmail" placeholder="${utente.email}">
+                                    <input type="text" class="form-control" name="email" id="inputEmail" placeholder="${utente.email}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label  class="col-lg-2 control-label">Nome</label>
                                 <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="inputName" placeholder="${utente.nome}">
+                                    <input type="text" class="form-control" name="nome" id="inputName" placeholder="${utente.nome}">
 
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label  class="col-lg-2 control-label">Cognome</label>
                                 <div class="col-lg-9">
-                                    <input type="text" class="form-control" id="inputSurname" placeholder="${utente.cognome}">    
+                                    <input type="text" class="form-control" name="cognome" id="inputSurname" placeholder="${utente.cognome}">    
                                 </div>
                             </div>
                             <div class="form-group">

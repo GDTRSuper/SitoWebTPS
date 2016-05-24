@@ -26,12 +26,12 @@ public class ProfileController {
 
     ManageDatabase db = new ManageDatabase();
     Utente u;
-
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String cats(ModelMap map, @RequestParam(value = "nick") String nick) {
-        u = db.getUtenteByNick(nick);
-        map.put("utente", u);
-        map.put("categorie", u.getCategorieCollection());
+    
+    @RequestMapping(value="/user",method=RequestMethod.GET)
+    public String cats(ModelMap map,HttpServletRequest request){
+        u = (Utente)request.getSession().getAttribute("utente");
+        map.put("utente",u);
+        map.put("categorie",u.getCategorieCollection());
         return "profile";
     }
 
@@ -115,5 +115,15 @@ public class ProfileController {
             return "redirect:/register?fields=true";
         }
 
+    }
+    
+    @RequestMapping(value="/modificaNCE",method=RequestMethod.GET)
+    public String boh(ModelMap map, @RequestParam(value="email") String email, @RequestParam(value="nome") String nome, @RequestParam(value="cognome") String cognome){
+        //System.out.println("nome: "+nome);
+        if(!email.isEmpty()) u.setEmail(email);
+        if(!nome.isEmpty()) u.setNome(nome);
+        if(!cognome.isEmpty()) u.setCognome(cognome);
+        db.salvaUtente(u);
+        return "redirect:/user?nick=bruno";
     }
 }
