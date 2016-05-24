@@ -17,7 +17,7 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="./res/css/bootstrap.min.css" rel="stylesheet">
-
+        <script src="./res/js/jquery.js"></script>
         <!-- Custom CSS -->
         <link href="./res/css/typeAhead.css" rel="stylesheet">
         <link href="./res/css/shop-homepage.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     <body>
 
-<jsp:include page="menu.jsp" />
+        <jsp:include page="menu.jsp" />
         <!-- Page Content -->
         <div class="container">
 
@@ -151,10 +151,10 @@
         <script>
 
             $('#query').typeahead({
-               remote: 'getEventi?a=%QUERY'
+                remote: 'getEventi?a=%QUERY'
             });
             $('.tt-query').css('background-color', '#fff');
- 
+
 
 
         </script>
