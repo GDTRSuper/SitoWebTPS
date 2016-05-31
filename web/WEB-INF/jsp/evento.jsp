@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="it.severi.gdtrsuper.db.Utente" %>
 <!DOCTYPE html>
 
 <html lang="it">
@@ -25,7 +26,7 @@
         <script src="./res/js/jquery.js"></script>
         <!-- Custom CSS -->
         <link href="./res/css/evento.css" rel="stylesheet">
-        
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -58,25 +59,47 @@
                                     <p>Descrizione: ${evento.descrizione}<br/><br/>Si terrà a ${evento.luogo} il ${evento.data}<br/> </p>
                                     <p>Artisti partecipanti: 
                                         <c:forEach items="${evento.artistiCollection}" var="artista">
-                                           ${artista.nomeArte}
+                                            ${artista.nomeArte}
                                         </c:forEach>
                                     </p>
                                 </div>
                                 <div class="ratings">
                                     <p class="pull-right">${evento.getNumCommenti()} Commenti</p>
                                     <p>Rating   
-                                    <c:forEach begin="1" end="${evento.getMedia()}">
-                                    <span class="glyphicon glyphicon-star"></span> </c:forEach>
-                                    <c:forEach begin="${evento.getMedia()}" end="4">
-                                    <span  class="half glyphicon glyphicon-star-empty"></span> </c:forEach>
-                                    </p>
+                                        <c:forEach begin="1" end="${evento.getMedia()}">
+                                            <span class="glyphicon glyphicon-star"></span> </c:forEach>
+                                        <c:forEach begin="${evento.getMedia()}" end="4">
+                                            <span  class="half glyphicon glyphicon-star-empty"></span> </c:forEach>
+                                        </p>
+                                    </div>
+
                                 </div>
 
-                            </div>
-                            
-                            <!-- Leave a comment -->
-                            <div class="well">
-                                <h4>Leave a Comment:</h4>
+                                <!-- Leave a comment -->
+                                <div class="well">
+                                    <h4>Leave a Comment:</h4>
+                                <%
+                                    Utente user = (Utente) session.getAttribute("utente");
+                                    if (user == null) {
+                                %>
+                                <form role="form" action="./" method="GET">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="3"></textarea>
+                                        <br/>
+                                        <p class="rating">
+                                            <label>Inserisci il numero di stelle: </label>
+                                            <span id="star1" class="ratings_star glyphicon glyphicon-star" data-rating="1"></span>
+                                            <span id="star2" class="ratings_star glyphicon glyphicon-star-empty" data-rating="2"></span>
+                                            <span id="star3" class="ratings_star glyphicon glyphicon-star-empty" data-rating="3"></span>
+                                            <span id="star4" class="ratings_star glyphicon glyphicon-star-empty" data-rating="4"></span>
+                                            <span id="star5" class="ratings_star glyphicon glyphicon-star-empty" data-rating="5"></span>
+                                        </p>
+                                        <input type="hidden" id="rating" value="1">
+                                        <input type="hidden" id="evento" value="${evento.id}">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                                <% }else{ %>
                                 <form role="form" action="./aggiungiCommento" method="POST">
                                     <div class="form-group">
                                         <textarea class="form-control" rows="3" name="nuovoCommento"></textarea>
@@ -94,6 +117,7 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
+                                <% } %>
                             </div>
 
                             <hr>
@@ -101,22 +125,24 @@
                             <!-- Posted Comments -->
 
                             <!-- Comment -->
+                            <% int c=0; %>
                             <c:forEach items="${evento.commentiCollection}" var="commento">
+                                <% out.print(c); c++; %>
                                 <div class="media">
                                     <a class="pull-left" href="#">
                                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                                     </a>
                                     <div class="media-body">
                                         <a href="./user?nick=${commento.utente.nickname}">
-                                        <h4 class="media-heading">${commento.utente.nickname}
+                                            <h4 class="media-heading">${commento.utente.nickname}
                                         </a>
-                                            <small class="ratings">
-                                                <c:forEach begin="1" end="${commento.voto}">
-                                                    <span class="glyphicon glyphicon-star"></span> </c:forEach>
-                                                <c:forEach begin="${commento.voto}" end="4">
-                                                    <span  class="half glyphicon glyphicon-star-empty"></span> 
-                                                </c:forEach>
-                                            </small>
+                                        <small class="ratings">
+                                            <c:forEach begin="1" end="${commento.voto}">
+                                                <span class="glyphicon glyphicon-star"></span> </c:forEach>
+                                            <c:forEach begin="${commento.voto}" end="4">
+                                                <span  class="half glyphicon glyphicon-star-empty"></span> 
+                                            </c:forEach>
+                                        </small>
                                         </h4>
                                         ${commento.testo}
                                     </div>
@@ -142,13 +168,13 @@
                 </div>
             </footer>
         </div>
-<!-- /.container -->
+        <!-- /.container -->
 
-<!-- jQuery -->
-<script src="./res/js/jquery.js"></script>
+        <!-- jQuery -->
+        <script src="./res/js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="./res/js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="./res/js/bootstrap.min.js"></script>
         <script src="./res/js/rating-comment.js"></script>
-</body>
+    </body>
 </html>

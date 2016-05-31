@@ -68,8 +68,8 @@
                                     <c:forEach items="${ultimiEventi}" var="evento">
                                         <div class="item <c:if test="${evento.id == 1}">active</c:if>" style="height:350px">
 
-                                           
-                                            <img class="slide-image"  src="${evento.immagine}" style="height: inherit" alt="${evento.titolo}">
+
+                                                <img class="slide-image"  src="${evento.immagine}" style="height: inherit" alt="${evento.titolo}">
                                         </div>
                                     </c:forEach>
 
@@ -93,7 +93,7 @@
                         <c:forEach items="${ultimiEventi}" var="evento">
                             <div class="col-sm-4 col-lg-4 col-md-4">
                                 <div class="thumbnail">
-                                    <img src="${evento.getImmagine()}" alt="">
+                                    <img style="height: 125px;" src="${evento.getImmagine()}" alt="${evento.getTitolo()}">
                                     <div class="caption">
                                         <h4 class="pull-right">${evento.creatore.nome}</h4>
                                         <h4><a href="./evento?id=${evento.id}">${fn:substring(evento.titolo, 0, 20)}</a></h4>
@@ -153,10 +153,10 @@
         <script>
 
             $('#query').typeahead({
-               remote: 'getEventi?a=%QUERY'
+                remote: 'getEventi?a=%QUERY'
             });
             $('.tt-query').css('background-color', '#fff');
- 
+
 
 
         </script>
