@@ -71,11 +71,8 @@ public class EventoController {
             }
         }
         evento.setArtistiCollection(arts);
-        db.aggiornaEvento(evento);
-        System.out.println("evento: "+evento);
-        List<Evento> v = db.cercaEvento(titolo);
-        Evento ev = v.get(0);
-        int i = ev.getId();
-        return "redirect:/evento?id="+i;
+        int id = db.salvaEvento(evento);
+        System.out.println("evento: "+evento+" id="+id);
+        return "redirect:/evento?id="+id;
     }
 }
