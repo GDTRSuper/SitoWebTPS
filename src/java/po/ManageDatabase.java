@@ -83,6 +83,19 @@ public class ManageDatabase {
 
         }
     }
+        public int salvaEvento(Evento e) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            int id = (Integer) session.save(e);
+            session.getTransaction().commit();
+            return id;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        return -1;
+    }//salvaEvento
     
     public void salvaUtente(Utente e) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -337,5 +350,32 @@ public class ManageDatabase {
 
         return null;
     }
+    
+     public List<Utente> getUtenti() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Utente");
+
+            List cats = query.list();
+            List<Utente> ut = new ArrayList<Utente>();
+            for (Object a : cats) {
+                ut.add((Utente) a);
+            }
+            tx.commit();
+            return ut;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return null;
+    }
+
 
 }

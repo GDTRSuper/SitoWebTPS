@@ -17,7 +17,7 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="./res/css/bootstrap.min.css" rel="stylesheet">
-
+        <script src="./res/js/jquery.js"></script>
         <!-- Custom CSS -->
         <link href="./res/css/typeAhead.css" rel="stylesheet">
         <link href="./res/css/shop-homepage.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 
     <body>
 
-<jsp:include page="menu.jsp" />
+        <jsp:include page="menu.jsp" />
         <!-- Page Content -->
         <div class="container">
 
@@ -64,14 +64,12 @@
 
 
                                 </ol>
-                                <div class="carousel-inner" style="height: 350px">
+                                <div class="carousel-inner">
                                     <c:forEach items="${ultimiEventi}" var="evento">
-                                        <div class="item <c:if test="${evento.id == 1}">active</c:if> ">
- 
-                                            <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
+                                        <div class="item <c:if test="${evento.id == 1}">active</c:if>" style="height:350px">
 
-                                            <img class="slide-image" width="800" height="100%" src="${evento.immagine}" alt="${evento.titolo}">
 
+                                                <img class="slide-image"  src="${evento.immagine}" style="height: inherit" alt="${evento.titolo}">
                                         </div>
                                     </c:forEach>
 
@@ -95,7 +93,7 @@
                         <c:forEach items="${ultimiEventi}" var="evento">
                             <div class="col-sm-4 col-lg-4 col-md-4">
                                 <div class="thumbnail">
-                                    <img src="${evento.getImmagine()}" alt="">
+                                    <img style="height: 125px;" src="${evento.getImmagine()}" alt="${evento.getTitolo()}">
                                     <div class="caption">
                                         <h4 class="pull-right">${evento.creatore.nome}</h4>
                                         <h4><a href="./evento?id=${evento.id}">${fn:substring(evento.titolo, 0, 20)}</a></h4>
@@ -155,10 +153,10 @@
         <script>
 
             $('#query').typeahead({
-               remote: 'getEventi?a=%QUERY'
+                remote: 'getEventi?a=%QUERY'
             });
             $('.tt-query').css('background-color', '#fff');
- 
+
 
 
         </script>
