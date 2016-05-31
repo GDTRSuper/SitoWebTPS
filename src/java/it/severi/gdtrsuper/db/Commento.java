@@ -113,7 +113,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
     @Override
     public String toString() {
-        return "it.severi.gdtrsuper.db.Commenti[ id=" + id + " ]";
+        return "Commento{" + "id=" + id + ", voto=" + voto + ", testo=" + testo + ", evento=" + evento + ", utente=" + utente + '}';
     }
+
+
     
 }

@@ -94,6 +94,7 @@
                                             <span id="star4" class="ratings_star glyphicon glyphicon-star-empty" data-rating="4"></span>
                                             <span id="star5" class="ratings_star glyphicon glyphicon-star-empty" data-rating="5"></span>
                                         </p>
+                                        <input type="hidden" name="login-required" value="true"/>
                                         <input type="hidden" id="rating" value="1">
                                         <input type="hidden" id="evento" value="${evento.id}">
                                     </div>

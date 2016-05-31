@@ -38,7 +38,7 @@
                 <%
                         out.println("<li><a href='./logout'>Logout</a></li>");
                     } else {%>
-                    <li <%if(request.getParameter("failed")!=null &&request.getParameter("failed").equals("true")){%>aria-expanded="true"  class="dropdown open" <%}else{%>class="dropdown"<%}%>>
+                    <li <%if(request.getParameter("login-required")!=null &&request.getParameter("login-required").equals("true")){%>class="dropdown open" <%}%> <%if(request.getParameter("failed")!=null &&request.getParameter("failed").equals("true")){%>aria-expanded="true"  class="dropdown open" <%}else{%>class="dropdown"<%}%>>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
                     <ul id="login-dp" class="dropdown-menu">
                         <form>
@@ -57,6 +57,9 @@
                                             <button type="submit" class="btn btn-primary btn-block" id="loginButton">Log in</button>
                                             <%if (request.getParameter("failed") != null && request.getParameter("failed").equals("true")) {%>
                                             <h4 style="text-align:center;color:red">Login errato</h4>
+                                            <%}%>
+                                            <%if (request.getParameter("login-required") != null && request.getParameter("login-required").equals("true")) {%>
+                                            <h4 style="text-align:center;color:red">Effettua il login per commentare</h4>
                                             <%}%>
 
                                         </div>
