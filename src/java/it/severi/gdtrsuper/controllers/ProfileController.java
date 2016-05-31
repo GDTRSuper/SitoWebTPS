@@ -112,6 +112,11 @@ public class ProfileController {
 
     }
     
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register(ModelMap map) {
+        return "register";
+    }
+    
     @RequestMapping(value="/modificaNCE",method=RequestMethod.GET)
     public String boh(ModelMap map, @RequestParam(value="email") String email, @RequestParam(value="nome") String nome, @RequestParam(value="cognome") String cognome){
         //System.out.println("nome: "+nome);
