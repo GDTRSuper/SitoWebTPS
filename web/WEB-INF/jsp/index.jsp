@@ -67,11 +67,11 @@
                                 <div class="carousel-inner" style="height: 350px">
                                     <c:forEach items="${ultimiEventi}" var="evento">
                                         <div class="item <c:if test="${evento.id == 1}">active</c:if> ">
-<<<<<<< HEAD (85c68c5) - 
+ 
                                             <img class="slide-image" width="800" height="300" src="${evento.immagine}" alt="">
-=======
+
                                             <img class="slide-image" width="800" height="100%" src="${evento.immagine}" alt="${evento.titolo}">
->>>>>>> origin/master (03956e8) - test
+
                                         </div>
                                     </c:forEach>
 
