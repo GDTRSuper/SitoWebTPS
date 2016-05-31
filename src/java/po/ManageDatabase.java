@@ -350,5 +350,32 @@ public class ManageDatabase {
 
         return null;
     }
+    
+     public List<Utente> getUtenti() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("from Utente");
+
+            List cats = query.list();
+            List<Utente> ut = new ArrayList<Utente>();
+            for (Object a : cats) {
+                ut.add((Utente) a);
+            }
+            tx.commit();
+            return ut;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return null;
+    }
+
 
 }

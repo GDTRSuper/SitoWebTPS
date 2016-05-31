@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <%@ page import="it.severi.gdtrsuper.db.Utente" %>
 <%
-    Utente user = (Utente) session.getAttribute("utente");
+   Utente user = (Utente) session.getAttribute("utente");
 %>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -27,7 +27,7 @@
                 <li>
                     <a href="#">Contact</a>
                 </li>
-                <% if (user != null && user.toString().equals("")) {
+                <% if (user != null) {
                 %>
                 <li>
                     <a href="./user">Profilo</a>
@@ -36,9 +36,9 @@
                     <a href="./createEvento">Crea Evento</a>
                 </li>
                 <%
-                    out.println("<li><a href='./logout'>Logout</a></li>");
-                } else {%>
-                <li <%if (request.getParameter("failed") != null && request.getParameter("failed").equals("true")) {%>aria-expanded="true"  class="dropdown open" <%} else {%>class="dropdown"<%}%>>
+                        out.println("<li><a href='./logout'>Logout</a></li>");
+                    } else {%>
+                    <li <%if(request.getParameter("failed")!=null &&request.getParameter("failed").equals("true")){%>aria-expanded="true"  class="dropdown open" <%}else{%>class="dropdown"<%}%>>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
                     <ul id="login-dp" class="dropdown-menu">
                         <form>
@@ -73,10 +73,10 @@
 
                     </ul>
                 </li>
-
+                
                 <% }
                 %>
-
+                
             </ul>
             <%@include file="search-field.jsp" %>
         </div>

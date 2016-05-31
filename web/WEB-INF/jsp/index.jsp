@@ -66,7 +66,9 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <c:forEach items="${ultimiEventi}" var="evento">
-                                        <div class="item<c:if test="${evento.id == 1}"> active</c:if>" style="height: 350px">
+                                        <div class="item <c:if test="${evento.id == 1}">active</c:if>" style="height:350px">
+
+                                           
                                             <img class="slide-image"  src="${evento.immagine}" style="height: inherit" alt="${evento.titolo}">
                                         </div>
                                     </c:forEach>
@@ -151,10 +153,10 @@
         <script>
 
             $('#query').typeahead({
-                remote: 'getEventi?a=%QUERY'
+               remote: 'getEventi?a=%QUERY'
             });
             $('.tt-query').css('background-color', '#fff');
-
+ 
 
 
         </script>
