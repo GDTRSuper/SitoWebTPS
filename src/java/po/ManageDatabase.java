@@ -157,7 +157,7 @@ public class ManageDatabase {
         return null;
     }
 
-    public List<Evento> cercaEvento(String param) {
+    public ArrayList<Evento> cercaEvento(String param) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
@@ -165,8 +165,8 @@ public class ManageDatabase {
             Query query = session.createQuery("from Evento where titolo LIKE :searchKeyword");
             query.setParameter("searchKeyword", "%"+param+"%");
             
-            List risultati = query.list();
-            System.out.println("Ris: "+risultati);
+            ArrayList<Evento> risultati =(ArrayList<Evento>) query.list();
+            
             return risultati;
         } catch (HibernateException e) {
             if (tx != null) {
@@ -179,6 +179,31 @@ public class ManageDatabase {
 
         return null;
     }
+    
+      public ArrayList<String> cercaEventoAjax(String param) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Query query = session.createQuery("Select e.titolo from Evento e where titolo LIKE :searchKeyword");
+            query.setParameter("searchKeyword", "%"+param+"%");
+            
+            ArrayList<String> risultati =(ArrayList<String>) query.list();
+           
+           
+            return risultati;
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return null;
+    }
+
 
     public Artista getArtistaByID(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();

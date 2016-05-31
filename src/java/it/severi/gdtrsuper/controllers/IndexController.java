@@ -37,7 +37,7 @@ public class IndexController {
     
      @RequestMapping(value="/search",method=RequestMethod.GET)
     public String search(ModelMap map, @RequestParam(value="srch-term") String param){
-       List<Evento> eventi =db.cercaEvento(param);
+       List<Evento> eventi = db.cercaEvento(param);
        map.put("eventi",eventi);
        return "search";
     }
