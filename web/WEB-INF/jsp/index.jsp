@@ -148,17 +148,23 @@
 
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="./res/js/typeAhead.js"></script>
+        <script src="./res/js/typeahead.js"></script>
 
         <script>
-
-            $('#query').typeahead({
-                remote: 'getEventi?a=%QUERY'
+            var eventi = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: './getEventi?a=%QUERY',
+                    wildcard: '%QUERY'
+                }
             });
+
+            $('#query').typeahead(null, {
+                source: eventi
+            });
+
             $('.tt-query').css('background-color', '#fff');
-
-
-
         </script>
 
     </body>
