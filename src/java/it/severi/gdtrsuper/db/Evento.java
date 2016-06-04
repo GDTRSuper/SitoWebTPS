@@ -80,7 +80,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @JoinColumn(name = "categoria", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Categoria categoria;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "evento")
+    @OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.ALL}, mappedBy = "evento")
     private Collection<Commento> commentiCollection;
         
     public int getNumCommenti(){

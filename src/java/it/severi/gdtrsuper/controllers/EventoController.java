@@ -37,14 +37,18 @@ public class EventoController {
     @RequestMapping(value="/aggiungiCommento",method=RequestMethod.POST)
     public String aggiugniEvento(ModelMap map,@ModelAttribute("utente") Utente user, @RequestParam(value="nuovoCommento", required=true)String commento, @RequestParam(value="rating", required=true)short rating, @RequestParam(value="evento", required=true)int id){
         Evento evento = db.getEventoById(id);
+        
         Commento com = new Commento();
         if(commento.isEmpty()) return "errorPage";
         else com.setTesto(commento);
         com.setVoto(rating);
         com.setEvento(evento);
         com.setUtente(db.getUtenteByNick(user.getNickname()));
-        db.salvaCommento(com);
+        Collection<Commento> c = evento.getCommentiCollection();
+        c.add(com);
+        evento.setCommentiCollection(c);
         db.aggiornaEvento(evento);
+        //db.aggiornaEvento(evento);
         map.put("evento",evento);
         //System.out.println(evento.getCommentiCollection());
         return "aggiungiCommento";
