@@ -152,12 +152,10 @@
 
         <script>
 
-            $('#query').typeahead({
+            $('#pippo').typeahead({
                 remote: 'getEventi?a=%QUERY'
             });
             $('.tt-query').css('background-color', '#fff');
-
-
 
         </script>
 

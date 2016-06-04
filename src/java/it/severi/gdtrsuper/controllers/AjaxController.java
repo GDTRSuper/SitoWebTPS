@@ -23,7 +23,6 @@ public class AjaxController {
     
     @RequestMapping(value="/getEventi")
     public @ResponseBody String eventi(@RequestParam String a){
-         
         return new Gson().toJson(db.cercaEventoAjax(a));
     }
     
