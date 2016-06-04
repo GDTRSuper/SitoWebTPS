@@ -68,7 +68,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @Column(name = "Immagine")
     private String immagine;
     
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     @JoinTable(name = "Eventi_Artisti", joinColumns = {
         @JoinColumn(name = "evento", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "artista", referencedColumnName = "id")})

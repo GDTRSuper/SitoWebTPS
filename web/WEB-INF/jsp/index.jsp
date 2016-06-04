@@ -148,15 +148,13 @@
 
 
         <!-- Bootstrap Core JavaScript -->
-        <script src="./res/js/typeAhead.js"></script>
+        <script src="./res/js/typeahead.js"></script>
 
         <script>
-
-            $('#pippo').typeahead({
+            $('#ricerca').typeahead({
                 remote: 'getEventi?a=%QUERY'
             });
             $('.tt-query').css('background-color', '#fff');
-
         </script>
 
     </body>

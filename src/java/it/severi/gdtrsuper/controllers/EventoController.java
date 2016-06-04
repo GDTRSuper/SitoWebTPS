@@ -44,7 +44,9 @@ public class EventoController {
         com.setEvento(evento);
         com.setUtente(db.getUtenteByNick(user.getNickname()));
         db.salvaCommento(com);
+        db.aggiornaEvento(evento);
         map.put("evento",evento);
+        //System.out.println(evento.getCommentiCollection());
         return "aggiungiCommento";
     }
     @RequestMapping(value="/createEvento",method=RequestMethod.GET)
